@@ -2,34 +2,33 @@ import { Client as Context, Message, MessageEmbed } from 'discord.js';
 import { Command, Ready } from '../decorators';
 import { MessageUtils } from '../utils/message.utils';
 import { BaseCommand } from './Base.command';
-import { DolarService } from '../services/index';
+import { GameService } from '../services/index';
 import { setDefaultEmbedFooter } from '../config/message.config';
 
 /**
- * @description Bot command utils for currencies are created on this file
+ * @description Bot command games are created in this file
  */
-class DolarCommand implements BaseCommand {
+class GameCommand implements BaseCommand {
 	/**
 	 * @description Help command to know about this module
 	 * @param {Context} _ctx
 	 * @param {Message} _msg
 	 * @return {Promise<void>}
 	 */
-	@Command({ name: 'dolar help', description: 'Muestra la lista de comandos del modulo' })
+	@Command({ name: 'game help', description: 'Muestra la lista de comandos del modulo' })
 	async help(_ctx: Context, _msg: Message): Promise<void> {
 		const commandList = [
 			{
 				name: 'help',
 				description: 'Muestra la lista de comandos del modulo',
-				command: 'dolar help',
+				command: 'game help',
 			},
 			{
-				name: 'dolarblue',
-				description: 'Trae el valor del dolar blue, tomado de bluelytics',
-				command: 'dolarblue',
+				name: 'iq',
+				description: 'Genera un numero aleatorio y te devuelve una imagen en base a ese numero',
+				command: 'iq',
 			},
 		];
-
 		/**
 		 * @description Construct the embed message
 		 */
@@ -50,27 +49,32 @@ class DolarCommand implements BaseCommand {
 		/** Send message to the channel */
 		await messageUtils.sendMessageToChannel(newEmbed, _msg.channelId);
 	}
-
 	/**
 	 * @description When the bot is ready do something
 	 */
+
 	@Ready()
-	async ready(_ctx: Context) {
-		console.log('Dolar  ready!');
+	async ready() {
+		console.info('Games ready!');
 	}
+
 	/**
+	 * @description Generates a random number and returns a template string with an image
 	 * @param {Context} _ctx
 	 * @param {Message} msg
-	 * @description Returns a string with the average price of the ARS/USD pair
 	 * @return {Promise<void>}
 	 */
-	@Command({ name: 'dolarblue' })
-	async dolarblue(_ctx: Context, msg: Message): Promise<void> {
+
+	@Command({ name: 'iq' })
+	async iq(_ctx: Context, msg: Message): Promise<void> {
 		const newMessage = new MessageUtils();
-		const dolarAVG = await DolarService.getData();
-		/** Send message to the channel */
-		newMessage.sendMessageToChannel(dolarAVG, msg.channelId);
+		try {
+			newMessage.sendMessageToChannel(GameService.getIq(msg), msg.channelId);
+		} catch (err) {
+			console.error(err.message);
+			throw new Error(err);
+		}
 	}
 }
 
-export default new DolarCommand();
+export default new GameCommand();
