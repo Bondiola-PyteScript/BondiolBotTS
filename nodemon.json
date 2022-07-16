@@ -10,5 +10,5 @@
         "coverage/"
     ],
 	"legacyWatch": true,
-	"exec": "npx etsc && node ./dist/index.js"
+	"exec": "npm run clearDistDirectory && npx etsc && node ./dist/index.js"
 }

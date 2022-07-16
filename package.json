@@ -39,6 +39,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.2",
     "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
     "typescript": "^4.4.2"
   },
   "engines": {
@@ -57,7 +58,6 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.12",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
     "ts-node": "^10.2.1",
     "typedi": "^0.10.0",
     "winston": "^3.3.3",
