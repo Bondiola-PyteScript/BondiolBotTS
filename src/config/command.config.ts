@@ -1,16 +1,16 @@
 import { commandConfig } from '../interfaces/command.config.interface';
 
 export const commandsConfig: commandConfig = {
-	facts: [
+	name: [
 		{
-			name: 'fact help',
+			name: 'Birthday help',
 			description: 'Muestra la lista de comandos del modulo',
-			command: 'fact help',
+			command: 'Birthday help',
 		},
 		{
-			name: 'fact start',
+			name: 'Birthday start',
 			description: 'Muestra un dato curioso al azar',
-			command: 'fact start',
+			command: 'Birthday start',
 		},
 	],
 };

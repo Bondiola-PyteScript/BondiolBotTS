@@ -1,3 +1,4 @@
+
 // Internal modules
 import { commandConfig } from '../interfaces/command.config.interface';
 
