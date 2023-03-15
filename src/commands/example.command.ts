@@ -3,8 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Client as Context, Message } from 'discord.js';
 import { Command, Ready } from '../decorators';
-import { BaseCommand } from './Base.command';
-
+import { BaseCommand } from './base.command';
 
 export class ExampleCommand implements BaseCommand {
 	help(_ctx: Context<boolean>, _msg: Message): Promise<void> {

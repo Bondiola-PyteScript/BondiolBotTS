@@ -1,5 +1,4 @@
 import { Message } from 'discord.js';
-import { BaseCommand } from '../commands/Base.command';
 
 export class CommandUtils {
 	private message: Message;

@@ -4,11 +4,10 @@ import { CommandExecute } from '../decorators/command.decorator';
 import { RantService } from '../services/rant.service';
 import { CommandError } from '../utils/error.utils';
 import { MessageUtils } from '../utils/message.utils';
-import { BaseCommand } from './Base.command';
+import { BaseCommand } from './base.command';
 import { UserUtils } from '../utils/user.utils';
 import { setDefaultEmbedFooter } from '../config/message.config';
 export class RantCommand implements BaseCommand {
-
 	@Command({ name: 'rant help', description: 'Muestra la lista de comandos del modulo' })
 	async help(_ctx: Context, _msg: Message) {
 		const commandList = [
@@ -31,13 +30,15 @@ export class RantCommand implements BaseCommand {
 		const messageUtils = new MessageUtils();
 		const embed = new MessageEmbed();
 		embed.setTitle('Mensaje de ayuda');
-		embed.setFields(...commandList.map(v => {
-			return {
-				name: v.command,
-				value: v.description,
-				inline: false,
-			};
-		}));
+		embed.setFields(
+			...commandList.map((v) => {
+				return {
+					name: v.command,
+					value: v.description,
+					inline: false,
+				};
+			}),
+		);
 		setDefaultEmbedFooter(embed);
 
 		await messageUtils.sendMessageToChannel(embed, _msg.channelId);

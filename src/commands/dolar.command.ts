@@ -1,7 +1,7 @@
 import { Client as Context, Message, MessageEmbed } from 'discord.js';
 import { Command, Ready } from '../decorators';
 import { MessageUtils } from '../utils/message.utils';
-import { BaseCommand } from './Base.command';
+import { BaseCommand } from './base.command';
 import { DolarService } from '../services/index';
 import { setDefaultEmbedFooter } from '../config/message.config';
 

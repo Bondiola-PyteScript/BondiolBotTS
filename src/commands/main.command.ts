@@ -3,7 +3,7 @@ import { setDefaultEmbedFooter } from '../config/message.config';
 import { Command, Ready } from '../decorators';
 import { CommandExecute } from '../decorators/command.decorator';
 import { MessageUtils } from '../utils/message.utils';
-import { BaseCommand } from './Base.command';
+import { BaseCommand } from './base.command';
 
 export class MainCommand implements BaseCommand {
 	@Ready()
@@ -25,7 +25,7 @@ export class MainCommand implements BaseCommand {
 		const embed2 = new MessageEmbed();
 		embed2.setTitle('Lista de comandos');
 		embed2.setColor('#0099ff');
-		commandList.forEach(v=> {
+		commandList.forEach((v) => {
 			embed2.addField(`${v.prefix}${v.name}`, v.description || 'Sin descripcion', false);
 		});
 		setDefaultEmbedFooter(embed2);
